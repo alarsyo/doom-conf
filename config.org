@@ -8,6 +8,7 @@
   - [[#lsp][LSP]]
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
+- [[#org-mode][Org mode]]
 
 * Misc
 
@@ -97,3 +98,12 @@ Setup the default format for C/C++ editing.
 (setq c-basic-offset 2)
 #+END_SRC
 
+* Org mode
+
+Doom replaces the default tab behavior on headings, this restores the default
+one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/org#hacks][here]].
+
+#+BEGIN_SRC emacs-lisp
+(after! evil-org
+  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+#+END_SRC
