@@ -98,6 +98,14 @@ Setup the default format for C/C++ editing.
 (setq c-basic-offset 2)
 #+END_SRC
 
+Flycheck never works well for C / C++ without configuration or a CMake build
+system. Let's disable it.
+
+#+BEGIN_SRC emacs-lisp
+(after! flycheck
+  (setq flycheck-global-modes '(not c-mode c++-mode)))
+#+END_SRC
+
 * Org mode
 
 Doom replaces the default tab behavior on headings, this restores the default
