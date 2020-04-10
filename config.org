@@ -1,3 +1,14 @@
+* Table of Contents :TOC:
+- [[#misc][Misc]]
+- [[#appearance][Appearance]]
+  - [[#font][Font]]
+  - [[#theme][Theme]]
+  - [[#line-numbers][Line numbers]]
+- [[#programming][Programming]]
+  - [[#lsp][LSP]]
+  - [[#rust][Rust]]
+  - [[#cc][C/C++]]
+
 * Misc
 
 Enable lexical binding, of course...
