@@ -1,3 +1,15 @@
+* Misc
+
+Enable lexical binding, of course...
+
+#+BEGIN_SRC emacs-lisp
+;;; -*- lexical-binding: t; -*-
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq enable-dir-local-variables nil)
+#+END_SRC
+
 * Appearance
 
 ** Font
@@ -74,8 +86,3 @@ Setup the default format for C/C++ editing.
 (setq c-basic-offset 2)
 #+END_SRC
 
-* Misc
-
-#+BEGIN_SRC emacs-lisp
-(setq enable-dir-local-variables nil)
-#+END_SRC
