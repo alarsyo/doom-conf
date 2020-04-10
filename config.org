@@ -107,3 +107,11 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+END_SRC
+
+Doom indents subtitles and their content by default, I prefer to leave them as
+is.
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (setq org-startup-indented nil))
+#+END_SRC
