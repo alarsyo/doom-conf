@@ -10,6 +10,7 @@
   - [[#cc][C/C++]]
 - [[#org-mode][Org mode]]
   - [[#agenda-setup][Agenda setup]]
+  - [[#journal][Journal]]
   - [[#doom-specific][Doom specific]]
 
 * Misc
@@ -119,6 +120,15 @@ during the day.
 (after! org
   (setq org-agenda-span 'day)
   (setq org-agenda-start-with-log-mode t))
+#+END_SRC
+
+** Journal
+
+For [[https://github.com/bastibe/org-journal][org-journal]] I want weekly entries (the default is ='daily=).
+
+#+BEGIN_SRC emacs-lisp
+(after! org-journal
+  (setq org-journal-file-type 'weekly))
 #+END_SRC
 
 ** Doom specific
