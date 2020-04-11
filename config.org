@@ -113,13 +113,95 @@ system. Let's disable it.
 
 ** Agenda setup
 
-I want the default agenda view to be a daily view, with a log of what I've done
-during the day.
+Here are the [[https://orgmode.org/manual/TODO-Extensions.html#TODO-Extensions][keywords]] I'm using to track task progress. I'm also making use of
+some automatic [[https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes][state changes]].
+
+| keyword     | meaning                                                                  |
+|-------------+--------------------------------------------------------------------------|
+| =TODO=      | Self explanatory                                                         |
+| =WAITING=   | I'm probably waiting on someone to do something before I can act on this |
+| =DONE=      | This task is finished, no longer displayed in the agenda                 |
+| =CANCELLED= | This task isn't finished but is no longer relevant                       |
 
 #+BEGIN_SRC emacs-lisp
 (after! org
-  (setq org-agenda-span 'day)
-  (setq org-agenda-start-with-log-mode t))
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"
+           "WAITING(w@/!)"
+           "|"
+           "DONE(d!)"
+           "CANCELLED(c@/!)")
+          (sequence
+           "[ ](T)"
+           "[-](S)"
+           "[?](W)"
+           "|"
+           "[X](D)"))))
+#+END_SRC
+
+Of course I also need to setup [[https://orgmode.org/manual/Capture-templates.html][capture templates]]:
+
+The first one just prompts me for a new task to add to my inbox, I can then
+[[https://orgmode.org/guide/Refile-and-Copy.html][refile]] them where I want later.
+
+The second one exists because I like to keep a separate list of articles /
+papers / books to read.
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (setq org-capture-templates
+        '(("t" "Task" entry (file "inbox.org")
+           "* TODO %?")
+          ("r" "Reading" entry (file "reading.org")
+           "* TODO %x"))))
+#+END_SRC
+
+All these tasks, once captured, are then centralized in my [[https://orgmode.org/guide/Agenda-Views.html][agenda view]].
+
+I'm using multiple categories to organize tasks, depending on their triage /
+status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]).
+
+#+BEGIN_SRC emacs-lisp
+(after! org-agenda
+  (setq org-agenda-custom-commands
+        '((" " "Agenda"
+           ((agenda ""
+                    ((org-agenda-span 'day)
+                     (org-agenda-start-day nil)
+                     (org-deadline-warning-days 365)))
+            (todo "TODO"
+                  ((org-agenda-overriding-header "Triage")
+                   (org-agenda-files '("~/org/inbox.org"))))
+            (todo "TODO"
+                  ((org-agenda-overriding-header "School")
+                   (org-agenda-files '(
+                                       "~/org/image.org"
+                                       "~/org/rdi.org"
+                                       ))))
+            (todo "TODO"
+                  ((org-agenda-overriding-header "Tasks")
+                   (org-agenda-files '("~/org/tasks.org"))
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
+                                                                        'scheduled))))
+            )))))
+#+END_SRC
+
+I want the default agenda view to be a weekly view, with a log of what I've done
+during the day.
+
+#+BEGIN_SRC emacs-lisp
+(after! org-agenda
+  (setq org-agenda-span 'week)
+  (setq org-agenda-start-on-weekday 1)
+  (setq org-agenda-start-with-log-mode '(clock)))
+#+END_SRC
+
+I also remove the block separators in the agenda view:
+
+#+BEGIN_SRC emacs-lisp
+(after! org-agenda
+  (setq org-agenda-block-separator ""))
 #+END_SRC
 
 ** Journal
