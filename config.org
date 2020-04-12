@@ -12,6 +12,7 @@
   - [[#agenda-setup][Agenda setup]]
   - [[#journal][Journal]]
   - [[#org-ids][Org IDs]]
+  - [[#roam][Roam]]
   - [[#doom-specific][Doom specific]]
 
 * Misc
@@ -228,6 +229,41 @@ links to work:
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-modules 'org-id)
+#+END_SRC
+
+** Roam
+
+Setup for [[https://github.com/jethrokuan/org-roam][org-roam]].
+
+First, set a directory where =org-roam= will index things.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-roam-directory (expand-file-name "notes/" org-directory))
+#+END_SRC
+
+Customize the capture templates:
+
+- the first one is [[https://github.com/jethrokuan/org-roam/blob/772505ba70c073ebc7905c4fcb8b9cc3759c775a/org-roam-capture.el#L81][the default one]], I just removed the timestamp from the file
+  title.
+- the second one I use to create new entries about website links, blog posts,
+  articles... The ~%x~ in the template is replaced by the content of my X
+  clipboard, so I just have to copy the website URL before capturing it.
+
+
+#+BEGIN_SRC emacs-lisp
+(after! org-roam
+  (setq org-roam-capture-templates
+        '(("d" "default" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "${slug}"
+           :head "#+TITLE: ${title}\n"
+           :unnarrowed t)
+          ("w" "website" plain (function org-roam-capture--get-point)
+           ""
+           :file-name "websites/${slug}"
+           :head "#+TITLE: ${title}
+#+ROAM_KEY: %x\n"
+           :unnarrowed t))))
 #+END_SRC
 
 ** Doom specific
