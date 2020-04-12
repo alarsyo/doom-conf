@@ -11,6 +11,7 @@
 - [[#org-mode][Org mode]]
   - [[#agenda-setup][Agenda setup]]
   - [[#journal][Journal]]
+  - [[#org-ids][Org IDs]]
   - [[#doom-specific][Doom specific]]
 
 * Misc
@@ -218,6 +219,15 @@ For [[https://github.com/bastibe/org-journal][org-journal]] I want weekly entrie
   (setq org-journal-file-pattern (org-journal-dir-and-format->regex
                                   org-journal-dir org-journal-file-format))
   (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
+#+END_SRC
+
+** Org IDs
+
+Org can link to entries using UUIDs, but we need the module to be loaded for
+links to work:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-modules 'org-id)
 #+END_SRC
 
 ** Doom specific
