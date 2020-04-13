@@ -255,6 +255,7 @@ Customize the capture templates:
 
 #+BEGIN_SRC emacs-lisp
 (after! org-roam
+  (set-face-attribute 'org-roam-link nil :foreground "#CCCC60")
   (setq org-roam-capture-templates
         '(("d" "default" plain (function org-roam-capture--get-point)
            "%?"
