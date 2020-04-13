@@ -189,6 +189,9 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
             (todo "TODO"
                   ((org-agenda-files '("~/org/reading.org"))
                    (org-agenda-overriding-header "To Read")))
+            (todo "TODO"
+                  ((org-agenda-files '("~/org/project.org"))
+                   (org-agenda-overriding-header "Personal projects")))
             )))))
 #+END_SRC
 
