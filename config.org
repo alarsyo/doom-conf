@@ -264,8 +264,7 @@ Customize the capture templates:
           ("w" "website" plain (function org-roam-capture--get-point)
            ""
            :file-name "websites/${slug}"
-           :head "#+TITLE: ${title}
-#+ROAM_KEY: %x\n"
+           :head "#+TITLE: ${title}\n#+ROAM_KEY: %x\n"
            :unnarrowed t))))
 #+END_SRC
 
