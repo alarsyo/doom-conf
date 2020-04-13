@@ -186,6 +186,9 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                    (org-agenda-files '("~/org/tasks.org"))
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
+            (todo "TODO"
+                  ((org-agenda-files '("~/org/reading.org"))
+                   (org-agenda-overriding-header "To Read")))
             )))))
 #+END_SRC
 
