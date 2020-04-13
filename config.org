@@ -256,6 +256,9 @@ Customize the capture templates:
 #+BEGIN_SRC emacs-lisp
 (after! org-roam
   (set-face-attribute 'org-roam-link nil :foreground "#CCCC60")
+  ;; this line can be removed if https://github.com/hlissner/doom-emacs/pull/2896
+  ;; gets merged
+  (add-hook 'org-roam-backlinks-mode-hook 'turn-on-visual-line-mode)
   (setq org-roam-capture-templates
         '(("d" "default" plain (function org-roam-capture--get-point)
            "%?"
