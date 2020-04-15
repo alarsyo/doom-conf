@@ -4,6 +4,7 @@
   - [[#font][Font]]
   - [[#theme][Theme]]
   - [[#line-numbers][Line numbers]]
+  - [[#battery-indicator][Battery indicator]]
 - [[#programming][Programming]]
   - [[#lsp][LSP]]
   - [[#rust][Rust]]
@@ -62,6 +63,14 @@ Possible values of =display-line-numbers-type= are =nil=, =t=, and ='relative=.
 
 #+BEGIN_SRC emacs-lisp
 (setq display-line-numbers-type 'relative)
+#+END_SRC
+
+** Battery indicator
+
+I'm on a laptop, so let's display my battery in the modeline:
+
+#+BEGIN_SRC emacs-lisp
+(display-battery-mode 1)
 #+END_SRC
 
 * Programming
