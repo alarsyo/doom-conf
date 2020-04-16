@@ -48,4 +48,3 @@
 
 ;; solaire mode breaks TUI when using the emacs daemon...
 (package! solaire-mode :disable t)
-(package! org-bullets :disable t)
