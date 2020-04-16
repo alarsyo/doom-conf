@@ -174,7 +174,8 @@ papers / books to read.
         '(("t" "Task" entry (file "inbox.org")
            "* TODO %?")
           ("r" "Reading" entry (file "reading.org")
-           "* TODO %x"))))
+           "* TODO %x"
+           :immediate-finish t))))
 #+END_SRC
 
 All these tasks, once captured, are then centralized in my [[https://orgmode.org/guide/Agenda-Views.html][agenda view]].
