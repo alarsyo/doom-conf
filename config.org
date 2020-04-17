@@ -238,13 +238,7 @@ For [[https://github.com/bastibe/org-journal][org-journal]] I want weekly entrie
 #+BEGIN_SRC emacs-lisp
 (after! org-journal
   (setq org-journal-date-format "%A (%d/%m/%Y)")
-  (setq org-journal-file-type 'weekly)
-  (setq org-journal-file-format "%Y-%m-%d.org")
-
-  ;; see `org-journal-dir-and-format->regex' documentation
-  (setq org-journal-file-pattern (org-journal-dir-and-format->regex
-                                  org-journal-dir org-journal-file-format))
-  (add-to-list 'auto-mode-alist (cons org-journal-file-pattern 'org-journal-mode)))
+  (setq org-journal-file-type 'weekly))
 #+END_SRC
 
 ** Org IDs
