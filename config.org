@@ -105,8 +105,9 @@ nice.
 Setup the default format for C/C++ editing.
 
 #+BEGIN_SRC emacs-lisp
-(setq c-default-style "gnu")
-(setq c-basic-offset 2)
+(add-hook! (c-mode c++-mode)
+  (setq c-default-style "gnu")
+  (setq c-basic-offset 2))
 #+END_SRC
 
 Flycheck never works well for C / C++ without configuration or a CMake build
