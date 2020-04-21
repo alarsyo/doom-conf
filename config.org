@@ -7,7 +7,6 @@
   - [[#battery-indicator][Battery indicator]]
   - [[#current-line][Current line]]
 - [[#programming][Programming]]
-  - [[#lsp][LSP]]
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
 - [[#org-mode][Org mode]]
@@ -45,7 +44,8 @@ They all accept either a font-spec, font string (=Input Mono-12=), or xlfd font
 string. You generally only need these two:
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Input Mono Narrow Medium" :size 12))
+(setq doom-font
+      (font-spec :family "Input Mono Narrow" :size 12 :style 'regular))
 #+END_SRC
 
 ** Theme
@@ -83,18 +83,6 @@ Always highlight the current line:
 #+END_SRC
 
 * Programming
-
-** LSP
-
-Doom disables documentation display in child frames by default; I like those, so
-re-enable them, and reset [[https://github.com/emacs-lsp/lsp-ui/blob/242dfe859c3497c456eaacfd84942e12419529fe/lsp-ui-doc.el#L84][the defaults]].
-
-#+BEGIN_SRC emacs-lisp
-(after! lsp-ui
-  (setq lsp-ui-doc-max-width 150)
-  (setq lsp-ui-doc-max-height 30)
-  (setq lsp-ui-doc-enable t))
-#+END_SRC
 
 ** Rust
 
