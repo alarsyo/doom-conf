@@ -9,6 +9,7 @@
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
 - [[#org-mode][Org mode]]
+  - [[#directory][Directory]]
   - [[#agenda-setup][Agenda setup]]
   - [[#journal][Journal]]
   - [[#org-ids][Org IDs]]
@@ -110,6 +111,14 @@ system. Let's disable it.
 #+END_SRC
 
 * Org mode
+
+** Directory
+
+Set a default directory for all my org-mode files.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/org/")
+#+END_SRC
 
 ** Agenda setup
 
