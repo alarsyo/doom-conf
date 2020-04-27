@@ -5,7 +5,6 @@
   - [[#theme][Theme]]
   - [[#line-numbers][Line numbers]]
   - [[#battery-indicator][Battery indicator]]
-  - [[#current-line][Current line]]
 - [[#programming][Programming]]
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
@@ -72,14 +71,6 @@ I'm on a laptop, so let's display my battery in the modeline:
 
 #+BEGIN_SRC emacs-lisp
 (display-battery-mode 1)
-#+END_SRC
-
-** Current line
-
-Always highlight the current line:
-
-#+BEGIN_SRC emacs-lisp
-(global-hl-line-mode +1)
 #+END_SRC
 
 * Programming
