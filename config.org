@@ -249,6 +249,12 @@ First, set a directory where =org-roam= will index things.
 (setq org-roam-directory (expand-file-name "notes/" org-directory))
 #+END_SRC
 
+Instruct =org-roam= to use =firefox-developer-edition= to open the graph:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-roam-graph-viewer (executable-find "firefox-developer-edition"))
+#+END_SRC
+
 Customize the capture templates:
 
 - the first one is [[https://github.com/jethrokuan/org-roam/blob/772505ba70c073ebc7905c4fcb8b9cc3759c775a/org-roam-capture.el#L81][the default one]], I just removed the timestamp from the file
