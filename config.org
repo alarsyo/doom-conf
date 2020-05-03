@@ -255,6 +255,14 @@ Instruct =org-roam= to use =firefox-developer-edition= to open the graph:
 (setq org-roam-graph-viewer (executable-find "firefox-developer-edition"))
 #+END_SRC
 
+Change link color for =org-roam= links, to distinguish them from standard Org
+links:
+
+#+BEGIN_SRC emacs-lisp
+(after! org-roam
+  (set-face-attribute 'org-roam-link nil :foreground "#FF8860"))
+#+END_SRC
+
 Customize the capture templates:
 
 - the first one is [[https://github.com/jethrokuan/org-roam/blob/772505ba70c073ebc7905c4fcb8b9cc3759c775a/org-roam-capture.el#L81][the default one]], I just removed the timestamp from the file
@@ -266,7 +274,6 @@ Customize the capture templates:
 
 #+BEGIN_SRC emacs-lisp
 (after! org-roam
-  (set-face-attribute 'org-roam-link nil :foreground "#FF8860")
   (setq org-roam-capture-templates
         '(("d" "default" plain (function org-roam-capture--get-point)
            "%?"
