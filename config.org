@@ -284,6 +284,11 @@ Customize the capture templates:
            ""
            :file-name "websites/${slug}"
            :head "#+TITLE: ${title}\n#+ROAM_KEY: %x\n"
+           :unnarrowed t)
+          ("p" "paper" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "paper/${slug}"
+           :head "#+TITLE: ${title}\n"
            :unnarrowed t))))
 #+END_SRC
 
