@@ -11,7 +11,6 @@
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#agenda-setup][Agenda setup]]
-  - [[#journal][Journal]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
   - [[#doom-specific][Doom specific]]
@@ -218,16 +217,6 @@ I also remove the block separators in the agenda view:
 #+BEGIN_SRC emacs-lisp
 (after! org-agenda
   (setq org-agenda-block-separator ""))
-#+END_SRC
-
-** Journal
-
-For [[https://github.com/bastibe/org-journal][org-journal]] I want weekly entries (the default is ='daily=).
-
-#+BEGIN_SRC emacs-lisp
-(after! org-journal
-  (setq org-journal-date-format "%A (%d/%m/%Y)")
-  (setq org-journal-file-type 'weekly))
 #+END_SRC
 
 ** Org IDs
