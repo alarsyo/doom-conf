@@ -260,7 +260,6 @@ Customize the capture templates:
   articles... The ~%x~ in the template is replaced by the content of my X
   clipboard, so I just have to copy the website URL before capturing it.
 
-
 #+BEGIN_SRC emacs-lisp
 (after! org-roam
   (setq org-roam-capture-templates
@@ -276,7 +275,7 @@ Customize the capture templates:
            :unnarrowed t)
           ("p" "paper" plain (function org-roam-capture--get-point)
            "%?"
-           :file-name "paper/${slug}"
+           :file-name "papers/${slug}"
            :head "#+TITLE: ${title}\n"
            :unnarrowed t))))
 #+END_SRC
