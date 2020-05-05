@@ -286,6 +286,18 @@ Customize the capture templates:
            :unnarrowed t))))
 #+END_SRC
 
+Also setup daily captures templates:
+
+#+BEGIN_SRC emacs-lisp
+(after! org-roam
+  (setq org-roam-dailies-capture-templates
+        '(("d" "daily" plain (function org-roam-capture--get-point)
+           ""
+           :immediate-finish t
+           :file-name "journal/%<%Y-%m-%d>"
+           :head "#+TITLE: %<%Y-%m-%d>"))))
+#+END_SRC
+
 ** Doom specific
 
 Doom replaces the default tab behavior on headings, this restores the default
