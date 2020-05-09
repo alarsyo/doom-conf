@@ -307,3 +307,9 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+END_SRC
+
+Disable fancy stars:
+
+#+BEGIN_SRC emacs-lisp
+(remove-hook 'org-mode-hook #'org-superstar-mode)
+#+END_SRC
