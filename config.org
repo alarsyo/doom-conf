@@ -62,7 +62,7 @@ https://github.com/hlissner/emacs-doom-themes
 Possible values of =display-line-numbers-type= are =nil=, =t=, and ='relative=.
 
 #+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type nil)
 #+END_SRC
 
 ** Battery indicator
