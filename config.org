@@ -319,6 +319,6 @@ Don't hide leading stars:
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-hide-leading-stars nil
-        org-hide-leading-stars-before-indent-mode nil
-        org-startup-indented nil))
+        org-startup-indented nil
+        org-adapt-indentation nil))
 #+END_SRC
