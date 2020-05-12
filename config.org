@@ -219,6 +219,12 @@ I also remove the block separators in the agenda view:
   (setq org-agenda-block-separator ""))
 #+END_SRC
 
+Let's enable the =org-habit= module:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-modules 'org-habit)
+#+END_SRC
+
 ** Org IDs
 
 Org can link to entries using UUIDs, but we need the module to be loaded for
