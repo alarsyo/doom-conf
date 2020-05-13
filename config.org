@@ -13,6 +13,7 @@
   - [[#agenda-setup][Agenda setup]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
+  - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
 
 * Misc
@@ -302,6 +303,17 @@ Also setup daily captures templates:
            :immediate-finish t
            :file-name "journal/%<%Y-%m-%d>"
            :head "#+TITLE: %<%Y-%m-%d>"))))
+#+END_SRC
+
+** Export backends
+
+Sometimes I need to export an Org subtree to a file, which is quite easy with
+the =org= export backend. It doesn't seem to be enabled by default, so let's add
+it to the list:
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (add-to-list 'org-export-backends 'org))
 #+END_SRC
 
 ** Doom specific
