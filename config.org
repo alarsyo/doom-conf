@@ -305,6 +305,15 @@ Also setup daily captures templates:
            :head "#+TITLE: %<%Y-%m-%d>"))))
 #+END_SRC
 
+*** Org Roam Server
+
+#+BEGIN_SRC emacs-lisp
+(use-package! simple-httpd)
+(use-package org-roam-server
+  :ensure nil
+  :load-path "~/work/org-roam-server")
+#+END_SRC
+
 ** Export backends
 
 Sometimes I need to export an Org subtree to a file, which is quite easy with
