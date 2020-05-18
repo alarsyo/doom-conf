@@ -49,3 +49,5 @@
 ;; solaire mode breaks TUI when using the emacs daemon...
 (package! solaire-mode :disable t)
 (package! simple-httpd)
+(package! org-roam-server
+  :recipe (:host github :repo "org-roam/org-roam-server"))

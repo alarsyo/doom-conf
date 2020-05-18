@@ -309,9 +309,7 @@ Also setup daily captures templates:
 
 #+BEGIN_SRC emacs-lisp
 (use-package! simple-httpd)
-(use-package org-roam-server
-  :ensure nil
-  :load-path "~/work/org-roam-server")
+(use-package! org-roam-server)
 #+END_SRC
 
 ** Export backends
