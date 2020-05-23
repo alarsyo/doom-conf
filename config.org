@@ -135,6 +135,12 @@ Don't hide leading stars:
         org-adapt-indentation nil))
 #+END_SRC
 
+Fancier ellipsis indicator:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-ellipsis " ▼ ")
+#+END_SRC
+
 ** Agenda setup
 
 Here are the [[https://orgmode.org/manual/TODO-Extensions.html#TODO-Extensions][keywords]] I'm using to track task progress. I'm also making use of
