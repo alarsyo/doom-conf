@@ -1,6 +1,7 @@
 * Table of Contents :TOC:
 - [[#misc][Misc]]
 - [[#theme][Theme]]
+  - [[#dark-theme-toggle][Dark theme toggle]]
   - [[#font][Font]]
   - [[#line-numbers][Line numbers]]
   - [[#battery-indicator][Battery indicator]]
@@ -36,6 +37,37 @@ https://github.com/hlissner/emacs-doom-themes
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-solarized-light)
+#+END_SRC
+
+** Dark theme toggle
+
+I've come to prefer using a light theme during the day, and a dark theme at
+night. Using a dark theme with daylight leads to cranking up the screen
+brightness, which hurts my eyes more than using the light theme.
+
+Set my light and dark themes:
+
+#+BEGIN_SRC emacs-lisp
+(setq my/light-theme doom-theme
+      my/dark-theme 'doom-one)
+#+END_SRC
+
+Function to toggle between the two easily:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/toggle-dark-theme ()
+  (interactive)
+  (if (eq my/dark-theme doom-theme)
+      (load-theme my/light-theme t)
+    (load-theme my/dark-theme t)))
+#+END_SRC
+
+Bind this to =SPC t d=:
+
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+      (:prefix-map ("t" . "toggle")
+       :desc "Dark theme" "d" #'my/toggle-dark-theme))
 #+END_SRC
 
 ** Font
