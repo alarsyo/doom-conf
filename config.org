@@ -9,6 +9,7 @@
   - [[#cc][C/C++]]
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
+  - [[#appearance][Appearance]]
   - [[#agenda-setup][Agenda setup]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
@@ -115,6 +116,23 @@ Set a default directory for all my org-mode files.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/org/")
+#+END_SRC
+
+** Appearance
+
+Disable fancy stars:
+
+#+BEGIN_SRC emacs-lisp
+(remove-hook 'org-mode-hook #'org-superstar-mode)
+#+END_SRC
+
+Don't hide leading stars:
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (setq org-hide-leading-stars nil
+        org-startup-indented nil
+        org-adapt-indentation nil))
 #+END_SRC
 
 ** Agenda setup
@@ -330,19 +348,4 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 #+BEGIN_SRC emacs-lisp
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
-#+END_SRC
-
-Disable fancy stars:
-
-#+BEGIN_SRC emacs-lisp
-(remove-hook 'org-mode-hook #'org-superstar-mode)
-#+END_SRC
-
-Don't hide leading stars:
-
-#+BEGIN_SRC emacs-lisp
-(after! org
-  (setq org-hide-leading-stars nil
-        org-startup-indented nil
-        org-adapt-indentation nil))
 #+END_SRC
