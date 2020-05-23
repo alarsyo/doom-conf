@@ -51,3 +51,6 @@
 (package! simple-httpd)
 (package! org-roam-server
   :recipe (:host github :repo "org-roam/org-roam-server"))
+
+;; C/C++ mode adds this, and I don't really need it
+(package! irony :disable t)
