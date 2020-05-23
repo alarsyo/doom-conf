@@ -146,26 +146,22 @@ Fancier ellipsis indicator:
 Here are the [[https://orgmode.org/manual/TODO-Extensions.html#TODO-Extensions][keywords]] I'm using to track task progress. I'm also making use of
 some automatic [[https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes][state changes]].
 
-| keyword     | meaning                                                                  |
-|-------------+--------------------------------------------------------------------------|
-| =TODO=      | Self explanatory                                                         |
-| =WAITING=   | I'm probably waiting on someone to do something before I can act on this |
-| =DONE=      | This task is finished, no longer displayed in the agenda                 |
-| =CANCELLED= | This task isn't finished but is no longer relevant                       |
+| keyword     | meaning                                                  |
+|-------------+----------------------------------------------------------|
+| =TODO=      | Self explanatory                                         |
+| =DONE=      | This task is finished, no longer displayed in the agenda |
+| =CANCELLED= | This task isn't finished but is no longer relevant       |
 
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"
-           "WAITING(w@/!)"
            "|"
            "DONE(d!)"
            "CANCELLED(c@/!)")
           (sequence
            "[ ](T)"
-           "[-](S)"
-           "[?](W)"
            "|"
            "[X](D)"))))
 #+END_SRC
