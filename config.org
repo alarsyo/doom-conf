@@ -255,6 +255,16 @@ papers / books to read.
            :immediate-finish t))))
 #+END_SRC
 
+I also change [[https://github.com/hlissner/doom-emacs/blob/134554dd69d9b1cea3d2190422de580fddf40ecd/modules/config/default/%2Bevil-bindings.el#L265][the default Doom binding]] for ~#'org-capture~ to be =SPC x= instead
+of =SPC X=. Also need to rebind what was [[https://github.com/hlissner/doom-emacs/blob/134554dd69d9b1cea3d2190422de580fddf40ecd/modules/config/default/%2Bevil-bindings.el#L264][previously bound]] to =SPC x=, to =SPC
+X=.
+
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+      :desc "Org Capture"           "x" #'org-capture
+      :desc "Pop up scratch buffer" "X" #'doom/open-scratch-buffer)
+#+END_SRC
+
 *** Main agenda view
 
 All these tasks, once captured, are then centralized in my [[https://orgmode.org/guide/Agenda-Views.html][agenda view]].
