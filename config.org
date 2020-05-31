@@ -1,5 +1,5 @@
-* Table of Contents :TOC:
 #+STARTUP: content
+* Table of Contents :TOC_3:
 - [[#misc][Misc]]
 - [[#theme][Theme]]
   - [[#dark-theme-toggle][Dark theme toggle]]
@@ -15,6 +15,7 @@
   - [[#agenda-setup][Agenda setup]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
+    - [[#org-roam-server][Org Roam Server]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
 
