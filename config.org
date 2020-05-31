@@ -1,7 +1,10 @@
 #+STARTUP: content
 * Table of Contents :TOC_3:
 - [[#misc][Misc]]
+  - [[#lexical-bindings][Lexical bindings]]
+  - [[#dir-local-variables][Dir local variables]]
 - [[#theme][Theme]]
+  - [[#main-theme][Main theme]]
   - [[#dark-theme-toggle][Dark theme toggle]]
   - [[#font][Font]]
   - [[#line-numbers][Line numbers]]
@@ -9,17 +12,32 @@
 - [[#programming][Programming]]
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
+    - [[#default-style][Default style]]
+    - [[#flycheck][Flycheck]]
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
+    - [[#disable-fancy-stars][Disable fancy stars]]
+    - [[#dont-hide-leading-stars][Don't hide leading stars]]
+    - [[#fancier-ellipsis-indicator][Fancier ellipsis indicator]]
   - [[#agenda-setup][Agenda setup]]
+    - [[#default-task-keywords][Default task keywords]]
+    - [[#org-capture-setup][Org capture setup]]
+    - [[#main-agenda-view][Main agenda view]]
+    - [[#habits][Habits]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
+    - [[#roam-directory][Roam Directory]]
+    - [[#graph-browser][Graph browser]]
+    - [[#roam-link-font-face][Roam link font face]]
+    - [[#roam-capture-template][Roam capture template]]
     - [[#org-roam-server][Org Roam Server]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
 
 * Misc
+
+** Lexical bindings
 
 Enable lexical binding, of course...
 
@@ -27,11 +45,18 @@ Enable lexical binding, of course...
 ;;; -*- lexical-binding: t; -*-
 #+END_SRC
 
+** Dir local variables
+
+Disable these because I don't use them and don't want to get prompted by them in
+some projects.
+
 #+BEGIN_SRC emacs-lisp
 (setq enable-dir-local-variables nil)
 #+END_SRC
 
 * Theme
+
+** Main theme
 
 A list of all doom themes can be found here:
 
@@ -126,6 +151,8 @@ nice.
 
 ** C/C++
 
+*** Default style
+
 Setup the default format for C/C++ editing.
 
 #+BEGIN_SRC emacs-lisp
@@ -133,6 +160,8 @@ Setup the default format for C/C++ editing.
   (setq c-default-style "gnu")
   (setq c-basic-offset 2))
 #+END_SRC
+
+*** Flycheck
 
 Flycheck never works well for C / C++ without configuration or a CMake build
 system. Let's disable it.
@@ -154,13 +183,15 @@ Set a default directory for all my org-mode files.
 
 ** Appearance
 
-Disable fancy stars:
+*** Disable fancy stars
 
 #+BEGIN_SRC emacs-lisp
 (remove-hook 'org-mode-hook #'org-superstar-mode)
 #+END_SRC
 
-Don't hide leading stars:
+*** Don't hide leading stars
+
+Currently doesn't work due to [[https://github.com/hlissner/doom-emacs/issues/3076][hlissner/doom-emacs#3076]]
 
 #+BEGIN_SRC emacs-lisp
 (after! org
@@ -169,13 +200,15 @@ Don't hide leading stars:
         org-adapt-indentation nil))
 #+END_SRC
 
-Fancier ellipsis indicator:
+*** Fancier ellipsis indicator
 
 #+BEGIN_SRC emacs-lisp
 (setq org-ellipsis " ▼ ")
 #+END_SRC
 
 ** Agenda setup
+
+*** Default task keywords
 
 Here are the [[https://orgmode.org/manual/TODO-Extensions.html#TODO-Extensions][keywords]] I'm using to track task progress. I'm also making use of
 some automatic [[https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes][state changes]].
@@ -200,6 +233,8 @@ some automatic [[https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tra
            "[X](D)"))))
 #+END_SRC
 
+*** Org capture setup
+
 Of course I also need to setup [[https://orgmode.org/manual/Capture-templates.html][capture templates]]:
 
 The first one just prompts me for a new task to add to my inbox, I can then
@@ -217,6 +252,8 @@ papers / books to read.
            "* TODO %x"
            :immediate-finish t))))
 #+END_SRC
+
+*** Main agenda view
 
 All these tasks, once captured, are then centralized in my [[https://orgmode.org/guide/Agenda-Views.html][agenda view]].
 
@@ -273,6 +310,8 @@ I also remove the block separators in the agenda view:
   (setq org-agenda-block-separator ""))
 #+END_SRC
 
+*** Habits
+
 Let's enable the =org-habit= module:
 
 #+BEGIN_SRC emacs-lisp
@@ -292,17 +331,23 @@ links to work:
 
 Setup for [[https://github.com/jethrokuan/org-roam][org-roam]].
 
+*** Roam Directory
+
 First, set a directory where =org-roam= will index things.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-roam-directory (expand-file-name "notes/" org-directory))
 #+END_SRC
 
+*** Graph browser
+
 Instruct =org-roam= to use =firefox-developer-edition= to open the graph:
 
 #+BEGIN_SRC emacs-lisp
 (setq org-roam-graph-viewer (executable-find "firefox-developer-edition"))
 #+END_SRC
+
+*** Roam link font face
 
 Change link color for =org-roam= links, to distinguish them from standard Org
 links:
@@ -311,6 +356,8 @@ links:
 (after! org-roam
   (set-face-attribute 'org-roam-link nil :foreground "#FF8860"))
 #+END_SRC
+
+*** Roam capture template
 
 Customize the capture templates:
 
@@ -346,7 +393,10 @@ Customize the capture templates:
            :unnarrowed t))))
 #+END_SRC
 
-Also setup daily captures templates:
+**** Roam daily capture templates
+
+Also setup daily captures templates, mainly used to store them in a =journal/=
+directory instead of at the root.
 
 #+BEGIN_SRC emacs-lisp
 (after! org-roam
@@ -359,6 +409,9 @@ Also setup daily captures templates:
 #+END_SRC
 
 *** Org Roam Server
+
+=org-roam-server= provides a fancy JS interface to visualize the graph. Just
+needs to be loaded, along with its dependency =simple-httpd=.
 
 #+BEGIN_SRC emacs-lisp
 (use-package! simple-httpd)
