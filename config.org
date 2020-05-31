@@ -246,7 +246,9 @@ papers / books to read.
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-capture-templates
-        '(("t" "Task" entry (file "inbox.org")
+        '(("t" "New entry" entry (file "inbox.org")
+           "* TODO %?")
+          ("T" "Task" entry (file "tasks.org")
            "* TODO %?")
           ("r" "Reading" entry (file "reading.org")
            "* TODO %x"
