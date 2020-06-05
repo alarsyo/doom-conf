@@ -25,6 +25,7 @@
     - [[#org-capture-setup][Org capture setup]]
     - [[#main-agenda-view][Main agenda view]]
     - [[#habits][Habits]]
+    - [[#save-all-org-buffers-shortcut][Save all org buffers shortcut]]
   - [[#org-ids][Org IDs]]
   - [[#roam][Roam]]
     - [[#roam-directory][Roam Directory]]
@@ -333,6 +334,17 @@ Let's enable the =org-habit= module:
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-modules 'org-habit)
+#+END_SRC
+
+*** Save all org buffers shortcut
+
+By default bound to =C-x C-s=, rebind it to =SPC m s= in =org-agenda-mode= :
+
+#+BEGIN_SRC emacs-lisp
+(map! :after org-agenda
+      :map org-agenda-mode-map
+      :localleader
+      "s" #'org-save-all-org-buffers)
 #+END_SRC
 
 ** Org IDs
