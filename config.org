@@ -150,6 +150,13 @@ nice.
   (setq rustic-format-trigger 'on-save))
 #+END_SRC
 
+=rustfmt= limits lines to 100 characters, let's display it correctly.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook! rustic-mode
+  (set-fill-column 100))
+#+END_SRC
+
 ** C/C++
 
 *** Default style
