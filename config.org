@@ -147,7 +147,7 @@ nice.
 
 #+BEGIN_SRC emacs-lisp
 (after! rustic
-  (setq rustic-format-trigger 'on-save))
+  (setq rustic-format-trigger 'nil))
 #+END_SRC
 
 =rustfmt= limits lines to 100 characters, let's display it correctly.
