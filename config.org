@@ -319,6 +319,9 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                   ((org-agenda-files '("~/org/reading.org"))
                    (org-agenda-overriding-header "To Read")))
             (todo "TODO"
+                  ((org-agenda-files '("~/org/notes.org"))
+                   (org-agenda-overriding-header "Note Taking")))
+            (todo "TODO"
                   ((org-agenda-files '("~/org/project.org"))
                    (org-agenda-overriding-header "Personal projects")))
             )))))
