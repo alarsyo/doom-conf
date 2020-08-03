@@ -15,7 +15,6 @@
     - [[#column-width][Column width]]
   - [[#cc][C/C++]]
     - [[#default-style][Default style]]
-    - [[#flycheck][Flycheck]]
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
@@ -165,16 +164,6 @@ Setup the default format for C/C++ editing.
 (add-hook! (c-mode c++-mode)
   (setq c-default-style "gnu")
   (setq c-basic-offset 2))
-#+END_SRC
-
-*** Flycheck
-
-Flycheck never works well for C / C++ without configuration or a CMake build
-system. Let's disable it.
-
-#+BEGIN_SRC emacs-lisp
-(after! flycheck
-  (setq flycheck-global-modes '(not c-mode c++-mode)))
 #+END_SRC
 
 * Org mode
