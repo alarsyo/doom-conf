@@ -12,6 +12,7 @@
 - [[#programming][Programming]]
   - [[#smart-parens][Smart parens]]
   - [[#rust][Rust]]
+    - [[#column-width][Column width]]
   - [[#cc][C/C++]]
     - [[#default-style][Default style]]
     - [[#flycheck][Flycheck]]
@@ -145,10 +146,12 @@ Disable smart parens because half of the time it doesn't do what I want:
 
 ** Rust
 
+*** Column width
+
 =rustfmt= limits lines to 100 characters, let's display it correctly.
 
 #+BEGIN_SRC emacs-lisp
-(add-hook! rustic-mode
+(add-hook! rust-mode
   (set-fill-column 100))
 #+END_SRC
 

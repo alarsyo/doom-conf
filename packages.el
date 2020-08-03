@@ -54,3 +54,5 @@
 
 ;; C/C++ mode adds this, and I don't really need it
 (package! irony :disable t)
+
+(package! rust-mode)
