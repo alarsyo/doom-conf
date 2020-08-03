@@ -10,6 +10,7 @@
   - [[#line-numbers][Line numbers]]
   - [[#battery-indicator][Battery indicator]]
 - [[#programming][Programming]]
+  - [[#smart-parens][Smart parens]]
   - [[#rust][Rust]]
   - [[#cc][C/C++]]
     - [[#default-style][Default style]]
@@ -133,6 +134,14 @@ I'm on a laptop, so let's display my battery in the modeline:
 #+END_SRC
 
 * Programming
+
+** Smart parens
+
+Disable smart parens because half of the time it doesn't do what I want:
+
+#+BEGIN_SRC emacs-lisp
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+#+END_SRC
 
 ** Rust
 
