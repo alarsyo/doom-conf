@@ -145,20 +145,6 @@ Disable smart parens because half of the time it doesn't do what I want:
 
 ** Rust
 
-By default =rustic-mode= uses =rls=, I want to use =rust-analyzer= instead.
-
-#+BEGIN_SRC emacs-lisp
-(setq rustic-lsp-server 'rust-analyzer)
-#+END_SRC
-
-I don't want to enable format-on-save globally in Doom, but having it in rust is
-nice.
-
-#+BEGIN_SRC emacs-lisp
-(after! rustic
-  (setq rustic-format-trigger 'nil))
-#+END_SRC
-
 =rustfmt= limits lines to 100 characters, let's display it correctly.
 
 #+BEGIN_SRC emacs-lisp
