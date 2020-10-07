@@ -36,6 +36,7 @@
     - [[#org-roam-server][Org Roam Server]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
+- [[#magit][Magit]]
 
 * Misc
 
@@ -469,4 +470,12 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 #+BEGIN_SRC emacs-lisp
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+#+END_SRC
+
+* Magit
+
+#+BEGIN_SRC emacs-lisp
+(after! magit
+  (transient-append-suffix 'magit-push "-n"
+    '(4 "-s" "Skip GitLab CI" "--push-option=ci.skip")))
 #+END_SRC
