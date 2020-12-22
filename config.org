@@ -123,7 +123,7 @@ string. You generally only need these two:
 Possible values of =display-line-numbers-type= are =nil=, =t=, and ='relative=.
 
 #+BEGIN_SRC emacs-lisp
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 #+END_SRC
 
 ** Battery indicator
