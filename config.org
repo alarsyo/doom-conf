@@ -3,6 +3,7 @@
 - [[#misc][Misc]]
   - [[#lexical-bindings][Lexical bindings]]
   - [[#dir-local-variables][Dir local variables]]
+  - [[#taking-svg-screenshots][Taking SVG screenshots]]
 - [[#theme][Theme]]
   - [[#main-theme][Main theme]]
   - [[#dark-theme-toggle][Dark theme toggle]]
@@ -56,6 +57,24 @@ some projects.
 #+BEGIN_SRC emacs-lisp
 (setq enable-dir-local-variables nil)
 #+END_SRC
+
+** Taking SVG screenshots
+
+Since Emacs 27, we can take SVG screenshots! Emacs needs to be built with
+=cairo= to support this.
+
+#+begin_src emacs-lisp
+(defun screenshot-svg ()
+  "Save a screenshot of the current frame as an SVG image.
+Saves to a temp file and puts the filename in the kill ring."
+  (interactive)
+  (let* ((filename (make-temp-file "Emacs" nil ".svg"))
+         (data (x-export-frames nil 'svg)))
+    (with-temp-file filename
+      (insert data))
+    (kill-new filename)
+    (message filename)))
+#+end_src
 
 * Theme
 
