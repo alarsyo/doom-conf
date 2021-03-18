@@ -43,6 +43,7 @@
 - [[#email][Email]]
   - [[#account-configuration][Account configuration]]
   - [[#disable-org-msg-by-default][Disable =org-msg= by default]]
+  - [[#message-quoting-style][Message quoting style]]
 
 * Misc
 
@@ -560,4 +561,30 @@ manually.
 
 #+begin_src emacs-lisp
 (remove-hook! mu4e-compose-pre #'org-msg-mode)
+#+end_src
+
+** Message quoting style
+
+Has to be duplicated because =mu4e= doesn't use ~message-cite-style~'s values.
+
+#+begin_src emacs-lisp
+(defconst message-cite-style-custom
+  '((message-cite-function          'message-cite-original-without-signature)
+    (message-citation-line-function 'message-insert-formatted-citation-line)
+    (message-cite-reply-position    'traditional)
+    (message-yank-prefix            "> ")
+    (message-yank-cited-prefix      "> ")
+    (message-yank-empty-prefix      ">")
+    (message-citation-line-format   "%f writes:"))
+  "Message citation style used for email. Use with `message-cite-style'.")
+
+(after! message
+  (setq message-cite-style message-cite-style-custom
+        message-cite-function          'message-cite-original-without-signature
+        message-citation-line-function 'message-insert-formatted-citation-line
+        message-cite-reply-position    'traditional
+        message-yank-prefix            "> "
+        message-yank-cited-prefix      "> "
+        message-yank-empty-prefix      ">"
+        message-citation-line-format   "%f writes:"))
 #+end_src
