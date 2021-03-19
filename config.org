@@ -534,7 +534,7 @@ when trying to connect to one of the servers that match the regex (see variable
 documentation).
 
 #+begin_src emacs-lisp
-(setq smtpmail-servers-requiring-authorization "smtp.migadu.com")
+(setq smtpmail-servers-requiring-authorization "smtp.migadu.com\\|smtp.lrde.epita.fr")
 #+end_src
 
 Setup my main email account.
@@ -552,6 +552,18 @@ Setup my main email account.
     (user-full-name         . "Antoine Martin")
     (mu4e-compose-signature . "Antoine Martin"))
   t)
+
+(set-email-account! "lrde"
+  '((mu4e-sent-folder       . "/lrde/Sent")
+    (mu4e-drafts-folder     . "/lrde/Drafts")
+    (mu4e-trash-folder      . "/lrde/Trash")
+    (smtpmail-smtp-server   . "smtp.lrde.epita.fr")
+    (smtpmail-smtp-service  . 587)
+    (smtpmail-stream-type   . starttls)
+    (user-mail-address      . "amartin@lrde.epita.fr")
+    (user-full-name         . "Antoine Martin")
+    (mu4e-compose-signature . "Antoine Martin"))
+  nil)
 #+end_src
 
 ** Disable =org-msg= by default
