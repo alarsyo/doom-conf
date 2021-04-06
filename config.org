@@ -319,16 +319,16 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                   ((org-agenda-overriding-header "Triage")
                    (org-agenda-files '("~/org/inbox.org"))))
             (todo "TODO"
+                  ((org-agenda-overriding-header "Job")
+                   (org-agenda-files '("~/org/job.org"))
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
+                                                                        'scheduled))))
+            (todo "TODO"
                   ((org-agenda-overriding-header "School")
                    (org-agenda-files '(
                                        "~/org/image.org"
                                        "~/org/rdi.org"
                                        ))
-                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
-                                                                        'scheduled))))
-            (todo "TODO"
-                  ((org-agenda-overriding-header "Job")
-                   (org-agenda-files '("~/org/job.org"))
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
             (todo "TODO"
