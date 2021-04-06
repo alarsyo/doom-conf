@@ -327,11 +327,6 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
             (todo "TODO"
-                  ((org-agenda-overriding-header "Assistant")
-                   (org-agenda-files '("~/org/assistant.org"))
-                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
-                                                                        'scheduled))))
-            (todo "TODO"
                   ((org-agenda-overriding-header "Job")
                    (org-agenda-files '("~/org/job.org"))
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
