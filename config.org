@@ -324,6 +324,9 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
             (todo "TODO"
+                  ((org-agenda-files '("~/org/project.org"))
+                   (org-agenda-overriding-header "Personal projects")))
+            (todo "TODO"
                   ((org-agenda-overriding-header "School")
                    (org-agenda-files '(
                                        "~/org/image.org"
@@ -345,9 +348,6 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
             (todo "TODO"
                   ((org-agenda-files '("~/org/notes.org"))
                    (org-agenda-overriding-header "Note Taking")))
-            (todo "TODO"
-                  ((org-agenda-files '("~/org/project.org"))
-                   (org-agenda-overriding-header "Personal projects")))
             )))))
 #+END_SRC
 
