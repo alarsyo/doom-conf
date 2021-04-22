@@ -143,7 +143,7 @@ string. You generally only need these two:
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-font
-      (font-spec :family "Input Mono Narrow" :size 12 :weight 'semi-light))
+      (font-spec :family "Iosevka Fixed" :size 10.0 :weight 'medium))
 #+END_SRC
 
 ** Line numbers
