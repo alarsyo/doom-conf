@@ -324,6 +324,11 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
             (todo "TODO"
+                  ((org-agenda-overriding-header "Tasks")
+                   (org-agenda-files '("~/org/tasks.org"))
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
+                                                                        'scheduled))))
+            (todo "TODO"
                   ((org-agenda-files '("~/org/project.org"))
                    (org-agenda-overriding-header "Personal projects")))
             (todo "TODO"
@@ -332,11 +337,6 @@ status (inspired by [[https://blog.jethro.dev/posts/org_mode_workflow_preview/]]
                                        "~/org/image.org"
                                        "~/org/rdi.org"
                                        ))
-                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
-                                                                        'scheduled))))
-            (todo "TODO"
-                  ((org-agenda-overriding-header "Tasks")
-                   (org-agenda-files '("~/org/tasks.org"))
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline
                                                                         'scheduled))))
             (todo "TODO"
