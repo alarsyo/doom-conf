@@ -412,7 +412,7 @@ First, set a directory where =org-roam= will index things.
 Instruct =org-roam= to use =firefox-developer-edition= to open the graph:
 
 #+BEGIN_SRC emacs-lisp
-(setq org-roam-graph-viewer (executable-find "firefox-developer-edition"))
+(setq org-roam-graph-viewer (executable-find "firefox"))
 #+END_SRC
 
 *** Roam link font face
