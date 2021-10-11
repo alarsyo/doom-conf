@@ -35,7 +35,6 @@
     - [[#graph-browser][Graph browser]]
     - [[#roam-link-font-face][Roam link font face]]
     - [[#roam-capture-template][Roam capture template]]
-    - [[#org-roam-server][Org Roam Server]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
 - [[#magit][Magit]]
@@ -475,16 +474,6 @@ directory instead of at the root.
            :immediate-finish t
            :file-name "journal/%<%Y-%m-%d>"
            :head "#+TITLE: %<%Y-%m-%d>"))))
-#+END_SRC
-
-*** Org Roam Server
-
-=org-roam-server= provides a fancy JS interface to visualize the graph. Just
-needs to be loaded, along with its dependency =simple-httpd=.
-
-#+BEGIN_SRC emacs-lisp
-(use-package! simple-httpd)
-(use-package! org-roam-server)
 #+END_SRC
 
 ** Export backends

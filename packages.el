@@ -48,12 +48,10 @@
 
 ;; solaire mode breaks TUI when using the emacs daemon...
 (package! solaire-mode :disable t)
-(package! simple-httpd)
-(package! org-roam-server
-  :recipe (:host github :repo "org-roam/org-roam-server"))
 
 ;; C/C++ mode adds this, and I don't really need it
 (package! irony :disable t)
+
 (package! beancount-mode
   :recipe (:host github :repo "beancount/beancount-mode")
   :pin "dcb317ed0a7582243f30ffc44aaf31717a81502b")
