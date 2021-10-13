@@ -15,6 +15,7 @@
   - [[#rust][Rust]]
     - [[#column-width][Column width]]
     - [[#run-clippy-in-rust-analyzer][Run clippy in rust-analyzer]]
+    - [[#enable-proc-macro-support][Enable proc macro support]]
   - [[#cc][C/C++]]
     - [[#default-style][Default style]]
 - [[#org-mode][Org mode]]
@@ -188,6 +189,15 @@ The default is ~"check"~, but I want clippy lints as well.
 
 #+begin_src emacs-lisp
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
+#+end_src
+
+*** Enable proc macro support
+
+By default lsp-mode disable these, I want them.
+
+#+begin_src emacs-lisp
+(setq lsp-rust-analyzer-experimental-proc-attr-macros t)
+(setq lsp-rust-analyzer-proc-macro-enable t)
 #+end_src
 
 ** C/C++
