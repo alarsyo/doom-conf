@@ -40,6 +40,7 @@
   - [[#doom-specific][Doom specific]]
 - [[#magit][Magit]]
   - [[#gitlab-ci-skip-flag][Gitlab CI skip flag]]
+  - [[#magit-delta][magit-delta]]
 - [[#email][Email]]
   - [[#account-configuration][Account configuration]]
   - [[#disable-org-msg-by-default][Disable =org-msg= by default]]
@@ -521,6 +522,13 @@ not ready yet.
 #+END_SRC
 
 GitLab push options are documented [[https://docs.gitlab.com/ee/user/project/push_options.html][here]].
+
+** magit-delta
+
+#+begin_src emacs-lisp
+(use-package! magit-delta
+  :hook (magit-mode . magit-delta-mode))
+#+end_src
 
 * Email
 
