@@ -54,7 +54,7 @@
 
 (package! beancount-mode
   :recipe (:host github :repo "beancount/beancount-mode")
-  :pin "dcb317ed0a7582243f30ffc44aaf31717a81502b")
+  :pin "ea8257881b7e276e8d170d724e3b2e179f25cb77")
 
 (package! magit-delta
   :recipe (:host github :repo "dandavison/magit-delta")
