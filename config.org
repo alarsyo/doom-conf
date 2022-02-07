@@ -11,6 +11,7 @@
   - [[#line-numbers][Line numbers]]
   - [[#battery-indicator][Battery indicator]]
 - [[#programming][Programming]]
+  - [[#tridactyl-mode][Tridactyl mode]]
   - [[#smart-parens][Smart parens]]
   - [[#rust][Rust]]
     - [[#column-width][Column width]]
@@ -164,6 +165,41 @@ I'm on a laptop, so let's display my battery in the modeline:
 #+END_SRC
 
 * Programming
+
+** Tridactyl mode
+
+#+begin_src emacs-lisp
+(defvar tridactylrc-font-lock-keywords
+  `(    ;; Line comment
+    ("^[\t ]*\\(\"\\)\\(.*\\)$"
+     (1 font-lock-comment-delimiter-face)
+     (2 font-lock-comment-face))
+
+    ;; Trailing comment
+    ("[\t ]+\\(\"\\)\\([^\"\r\n]*\\)$"
+     (1 font-lock-comment-delimiter-face)
+     (2 font-lock-comment-face))
+
+    ;; String start:
+    ("\\(\"[^\n\r\"]*\"\\)\\|\\('[^\n\r]*'\\)"
+     (0 font-lock-string-face)) ;; String end;
+    ))
+
+(defvar tridactylrc-mode-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?'  "\"" table)
+    (modify-syntax-entry ?\" "<"  table)
+    (modify-syntax-entry ?\n ">"  table)
+    table))
+
+(define-derived-mode tridactylrc-mode prog-mode "tridactylrc"
+  "Major mode for editing tridactylrc configuration files."
+  :group 'tridactylrc-mode
+  :syntax-table tridactylrc-mode-syntax-table
+  (font-lock-add-keywords nil tridactylrc-font-lock-keywords)
+  (setq-local comment-start "\"")
+  (setq-local comment-end ""))
+#+end_src
 
 ** Smart parens
 
