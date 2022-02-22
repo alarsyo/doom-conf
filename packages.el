@@ -58,4 +58,4 @@
 
 (package! magit-delta
   :recipe (:host github :repo "dandavison/magit-delta")
-  :pin "56cdffd377279589aa0cb1df99455c098f1848cf")
+  :pin "5fc7dbddcfacfe46d3fd876172ad02a9ab6ac616")
