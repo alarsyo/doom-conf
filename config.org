@@ -22,8 +22,6 @@
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
-    - [[#disable-fancy-stars][Disable fancy stars]]
-    - [[#dont-hide-leading-stars][Don't hide leading stars]]
     - [[#fancier-ellipsis-indicator][Fancier ellipsis indicator]]
   - [[#agenda-setup][Agenda setup]]
     - [[#default-task-keywords][Default task keywords]]
@@ -259,23 +257,6 @@ Set a default directory for all my org-mode files.
 #+END_SRC
 
 ** Appearance
-
-*** Disable fancy stars
-
-#+BEGIN_SRC emacs-lisp
-(remove-hook 'org-mode-hook #'org-superstar-mode)
-#+END_SRC
-
-*** Don't hide leading stars
-
-Currently doesn't work due to [[https://github.com/hlissner/doom-emacs/issues/3076][hlissner/doom-emacs#3076]]
-
-#+BEGIN_SRC emacs-lisp
-(after! org
-  (setq org-hide-leading-stars nil
-        org-startup-indented nil
-        org-adapt-indentation nil))
-#+END_SRC
 
 *** Fancier ellipsis indicator
 
