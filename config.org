@@ -435,6 +435,14 @@ it to the list:
 
 ** Doom specific
 
+Doom makes some changes to org-id behaviour which I don't like / think are necessary.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-id-locations-file (expand-file-name "~/.config/emacs/.org-id-locations"))
+  (setq org-id-locations-file-relative nil))
+#+end_src
+
 Doom replaces the default tab behavior on headings, this restores the default
 one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/org#hacks][here]].
 
