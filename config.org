@@ -24,6 +24,7 @@
   - [[#appearance][Appearance]]
     - [[#fancier-ellipsis-indicator][Fancier ellipsis indicator]]
   - [[#logging][Logging]]
+  - [[#archiving][Archiving]]
   - [[#agenda-setup][Agenda setup]]
     - [[#default-task-keywords][Default task keywords]]
     - [[#org-capture-setup][Org capture setup]]
@@ -269,6 +270,16 @@ Log state changes in a src_org{:LOGBOOK:} drawer so that it doesn't pollute the 
 #+begin_src emacs-lisp
 (after! org
   (setq org-log-into-drawer t))
+#+end_src
+
+** Archiving
+
+I don't want to see archival files appearing when listing files in the current
+directory, so hide them by default.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-archive-location ".%s_archive::"))
 #+end_src
 
 ** Agenda setup
