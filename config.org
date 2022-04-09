@@ -40,6 +40,7 @@
   - [[#magit-delta][magit-delta]]
 - [[#email][Email]]
   - [[#account-configuration][Account configuration]]
+  - [[#sending-mail][Sending mail]]
   - [[#disable-org-msg-by-default][Disable =org-msg= by default]]
   - [[#message-quoting-style][Message quoting style]]
   - [[#use-gnus-view-for-mu4e][Use Gnus view for =mu4e=]]
@@ -489,14 +490,11 @@ documentation).
 Setup my main email account.
 
 #+begin_src emacs-lisp
-(set-email-account! "alarsyo.net"
-  '((mu4e-sent-folder       . "/alarsyo.net/Sent")
-    (mu4e-drafts-folder     . "/alarsyo.net/Drafts")
-    (mu4e-refile-folder     . "/alarsyo.net/Archive")
-    (mu4e-trash-folder      . "/alarsyo.net/Trash")
-    (smtpmail-smtp-server   . "smtp.migadu.com")
-    (smtpmail-smtp-service  . 465)
-    (smtpmail-stream-type   . ssl)
+(set-email-account! "alarsyo"
+  '((mu4e-sent-folder       . "/alarsyo/Sent")
+    (mu4e-drafts-folder     . "/alarsyo/Drafts")
+    (mu4e-refile-folder     . "/alarsyo/Archive")
+    (mu4e-trash-folder      . "/alarsyo/Trash")
     (user-mail-address      . "antoine@alarsyo.net")
     (user-full-name         . "Antoine Martin")
     (mu4e-compose-signature . "Antoine Martin"))
@@ -506,13 +504,23 @@ Setup my main email account.
   '((mu4e-sent-folder       . "/lrde/Sent")
     (mu4e-drafts-folder     . "/lrde/Drafts")
     (mu4e-trash-folder      . "/lrde/Trash")
-    (smtpmail-smtp-server   . "smtp.lrde.epita.fr")
-    (smtpmail-smtp-service  . 587)
-    (smtpmail-stream-type   . starttls)
     (user-mail-address      . "amartin@lrde.epita.fr")
     (user-full-name         . "Antoine Martin")
     (mu4e-compose-signature . "Antoine Martin"))
   nil)
+#+end_src
+
+** Sending mail
+
+I use =msmtp= as a SMTP forwarder
+
+#+begin_src emacs-lisp
+(after! mu4e
+  (setq sendmail-program (executable-find "msmtp")
+        send-mail-function #'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function #'message-send-mail-with-sendmail))
 #+end_src
 
 ** Disable =org-msg= by default
