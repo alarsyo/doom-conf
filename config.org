@@ -41,10 +41,11 @@
 - [[#email][Email]]
   - [[#account-configuration][Account configuration]]
   - [[#sending-mail][Sending mail]]
+  - [[#reading-plain-text][Reading plain text]]
   - [[#disable-org-msg-by-default][Disable =org-msg= by default]]
   - [[#message-quoting-style][Message quoting style]]
-  - [[#use-gnus-view-for-mu4e][Use Gnus view for =mu4e=]]
   - [[#disable-formatflowed][Disable format=flowed]]
+  - [[#dont-permanently-delete-when-trashing-mails][Don't permanently delete when trashing mails]]
   - [[#add-git-apply-path-to-mu4e-actions][Add git-apply-path to mu4e actions]]
 
 * Misc
@@ -523,6 +524,17 @@ I use =msmtp= as a SMTP forwarder
         message-send-mail-function #'message-send-mail-with-sendmail))
 #+end_src
 
+** Reading plain text
+
+Ask the =gnus-view= (default viewer used by =mu4e=) to avoid HTML whenever
+possible.
+
+#+begin_src emacs-lisp
+(after! mu4e
+  (add-to-list 'mm-discouraged-alternatives "text/html")
+  (add-to-list 'mm-discouraged-alternatives "text/richtext"))
+#+end_src
+
 ** Disable =org-msg= by default
 
 Doom adds a hook, making it impossible to disable. This allows us to toggle it
@@ -558,13 +570,6 @@ Has to be duplicated because =mu4e= doesn't use ~message-cite-style~'s values.
         message-citation-line-format   "%f writes:"))
 #+end_src
 
-** Use Gnus view for =mu4e=
-
-#+begin_src emacs-lisp
-(after! mu4e
-  (setq mu4e-view-use-gnus t))
-#+end_src
-
 ** Disable format=flowed
 
 #+begin_src emacs-lisp
@@ -572,10 +577,35 @@ Has to be duplicated because =mu4e= doesn't use ~message-cite-style~'s values.
   (setq mu4e-compose-format-flowed nil))
 #+end_src
 
+** Don't permanently delete when trashing mails
+
+By default =mu4e= sets the =trashed= flag on emails trashed using the =d=
+keybinding. This just replaces the action to just move the message to the trash
+instead.
+
+See https://github.com/djcb/mu/issues/1136#issuecomment-1066303788, the code
+will have to be adapted soon.
+
+#+begin_src emacs-lisp
+(after! mu4e
+  (setf (alist-get 'trash mu4e-marks)
+        (list :char '("d" . "▼")
+              :prompt "dtrash"
+              :dyn-target (lambda (target msg)
+                            (mu4e-get-trash-folder msg))
+              :action (lambda (docid msg target)
+                        (mu4e~proc-move
+                         docid (mu4e~mark-check-target target) "-N")))))
+#+end_src
+
 ** Add git-apply-path to mu4e actions
 
 #+begin_src emacs-lisp
 (after! mu4e
+  ;; TODO: upstream this, Doom emacs adds a view in browser action but it seems
+  ;; to be present by default now.
+  (setq mu4e-view-actions
+        (remove '("View in browser" . mu4e-action-view-in-browser) mu4e-view-actions))
   (add-to-list 'mu4e-view-actions
                '("GitApply" . mu4e-action-git-apply-patch) t)
   (add-to-list 'mu4e-view-actions
