@@ -23,6 +23,7 @@
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
     - [[#fancier-ellipsis-indicator][Fancier ellipsis indicator]]
+  - [[#logging][Logging]]
   - [[#agenda-setup][Agenda setup]]
     - [[#default-task-keywords][Default task keywords]]
     - [[#org-capture-setup][Org capture setup]]
@@ -260,6 +261,15 @@ Set a default directory for all my org-mode files.
 #+BEGIN_SRC emacs-lisp
 (setq org-ellipsis " ▼ ")
 #+END_SRC
+
+** Logging
+
+Log state changes in a src_org{:LOGBOOK:} drawer so that it doesn't pollute the main content.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-log-into-drawer t))
+#+end_src
 
 ** Agenda setup
 
