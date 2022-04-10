@@ -541,7 +541,8 @@ Doom adds a hook, making it impossible to disable. This allows us to toggle it
 manually.
 
 #+begin_src emacs-lisp
-(remove-hook! mu4e-compose-pre #'org-msg-mode)
+(after! org-msg
+  (setq +mu4e-compose-org-msg-toggle-next nil))
 #+end_src
 
 ** Message quoting style
