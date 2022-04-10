@@ -19,6 +19,8 @@
     - [[#enable-proc-macro-support][Enable proc macro support]]
   - [[#cc][C/C++]]
     - [[#default-style][Default style]]
+  - [[#nix][Nix]]
+    - [[#formatting][Formatting]]
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
@@ -246,6 +248,16 @@ Setup the default format for C/C++ editing.
   (setq c-default-style "gnu")
   (setq c-basic-offset 2))
 #+END_SRC
+
+** Nix
+
+*** Formatting
+
+Use [[https://github.com/kamadorueda/alejandra][alejandra]] to format Nix code.
+
+#+begin_src emacs-lisp
+(set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+#+end_src
 
 * Org mode
 
