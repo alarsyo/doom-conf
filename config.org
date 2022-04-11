@@ -33,6 +33,7 @@
     - [[#main-agenda-view][Main agenda view]]
     - [[#habits][Habits]]
     - [[#save-all-org-buffers-shortcut][Save all org buffers shortcut]]
+    - [[#script-to-open-agenda-window-automatically][Script to open agenda window automatically]]
   - [[#roam][Roam]]
     - [[#roam-directory][Roam Directory]]
     - [[#org-roam-ui][org-roam-ui]]
@@ -428,6 +429,18 @@ By default bound to =C-x C-s=, rebind it to =SPC m s= in =org-agenda-mode= :
       :localleader
       "s" #'org-save-all-org-buffers)
 #+END_SRC
+
+*** Script to open agenda window automatically
+
+I use this script to automatically open the agenda when pressing a specific key binding in my window manager.
+
+#+begin_src emacs-lisp :tangle "launch-agenda.el"
+(find-file org-directory)
+(with-selected-window (split-window-horizontally)
+  ;; need to wait for the window to appear
+  (sleep-for 0.1)
+  (org-agenda nil " "))
+#+end_src
 
 ** Roam
 
