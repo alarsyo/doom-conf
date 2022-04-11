@@ -50,6 +50,8 @@
   - [[#disable-formatflowed][Disable format=flowed]]
   - [[#dont-permanently-delete-when-trashing-mails][Don't permanently delete when trashing mails]]
   - [[#add-git-apply-path-to-mu4e-actions][Add git-apply-path to mu4e actions]]
+  - [[#enable-auto-updates][Enable auto updates]]
+  - [[#ask-which-address-to-send-with-when-composing-a-new-mail][Ask which address to send with when composing a new mail]]
 
 * Misc
 
@@ -640,4 +642,18 @@ will have to be adapted soon.
                '("GitApply" . mu4e-action-git-apply-patch) t)
   (add-to-list 'mu4e-view-actions
                '("MboxGitApply" . mu4e-action-git-apply-mbox) t))
+#+end_src
+
+** Enable auto updates
+
+#+begin_src emacs-lisp
+(after! mu4e
+  (setq mu4e-update-interval 900))
+#+end_src
+
+** Ask which address to send with when composing a new mail
+
+#+begin_src emacs-lisp
+(after! mu4e
+  (setq mu4e-compose-context-policy 'ask))
 #+end_src
