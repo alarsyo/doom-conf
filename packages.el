@@ -59,3 +59,7 @@
 (package! magit-delta
   :recipe (:host github :repo "dandavison/magit-delta")
   :pin "5fc7dbddcfacfe46d3fd876172ad02a9ab6ac616")
+
+(package! org-roam-ui
+  :recipe (:host github :repo "org-roam/org-roam-ui")
+  :pin "9474a254390b1e42488a1801fed5826b32a8030b")

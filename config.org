@@ -35,6 +35,7 @@
     - [[#save-all-org-buffers-shortcut][Save all org buffers shortcut]]
   - [[#roam][Roam]]
     - [[#roam-directory][Roam Directory]]
+    - [[#org-roam-ui][org-roam-ui]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
 - [[#magit][Magit]]
@@ -436,6 +437,22 @@ First, set a directory where =org-roam= will index things.
 #+BEGIN_SRC emacs-lisp
 (setq org-roam-directory (expand-file-name "notes/" org-directory))
 #+END_SRC
+
+*** org-roam-ui
+
+Setup [[https://github.com/org-roam/org-roam-ui][org-roam-ui]]
+
+#+begin_src emacs-lisp
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam
+    :config (setq org-roam-ui-sync-theme t
+                  org-roam-ui-follow t
+                  org-roam-ui-update-on-save t
+                  org-roam-ui-open-on-start t))
+#+end_src
 
 ** Export backends
 
