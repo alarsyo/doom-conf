@@ -38,6 +38,7 @@
     - [[#org-roam-ui][org-roam-ui]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
+    - [[#bugfix][Bugfix]]
 - [[#magit][Magit]]
   - [[#gitlab-ci-skip-flag][Gitlab CI skip flag]]
   - [[#magit-delta][magit-delta]]
@@ -484,6 +485,23 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+END_SRC
+
+*** Bugfix
+
+Fix a bug with capture mode not working correctly when agenda is opened, stolen
+from https://github.com/hlissner/doom-emacs/issues/5714#issuecomment-1018788028
+
+#+begin_src emacs-lisp
+(after! org
+  (defadvice! dan/+org--restart-mode-h-careful-restart (fn &rest args)
+    :around #'+org--restart-mode-h
+    (let ((old-org-capture-current-plist (and (bound-and-true-p org-capture-mode)
+                                              (bound-and-true-p org-capture-current-plist))))
+      (apply fn args)
+      (when old-org-capture-current-plist
+        (setq-local org-capture-current-plist old-org-capture-current-plist)
+        (org-capture-mode +1)))))
+#+end_src
 
 * Magit
 
