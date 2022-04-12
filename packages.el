@@ -52,10 +52,6 @@
 ;; C/C++ mode adds this, and I don't really need it
 (package! irony :disable t)
 
-(package! beancount-mode
-  :recipe (:host github :repo "beancount/beancount-mode")
-  :pin "ea8257881b7e276e8d170d724e3b2e179f25cb77")
-
 (package! magit-delta
   :recipe (:host github :repo "dandavison/magit-delta")
   :pin "5fc7dbddcfacfe46d3fd876172ad02a9ab6ac616")
