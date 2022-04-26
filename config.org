@@ -540,6 +540,11 @@ GitLab push options are documented [[https://docs.gitlab.com/ee/user/project/pus
 
 * Email
 
+#+begin_src emacs-lisp :noweb no-export
+(after! mu4e
+  <<after-mu4e>>)
+#+end_src
+
 ** Account configuration
 
 This setting instructs =mu4e= to prompt for login credentials if none are found
@@ -577,13 +582,12 @@ Setup my main email account.
 
 I use =msmtp= as a SMTP forwarder
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (setq sendmail-program (executable-find "msmtp")
-        send-mail-function #'smtpmail-send-it
-        message-sendmail-f-is-evil t
-        message-sendmail-extra-arguments '("--read-envelope-from")
-        message-send-mail-function #'message-send-mail-with-sendmail))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq sendmail-program (executable-find "msmtp")
+      send-mail-function #'smtpmail-send-it
+      message-sendmail-f-is-evil t
+      message-sendmail-extra-arguments '("--read-envelope-from")
+      message-send-mail-function #'message-send-mail-with-sendmail)
 #+end_src
 
 ** Reading plain text
@@ -591,10 +595,9 @@ I use =msmtp= as a SMTP forwarder
 Ask the =gnus-view= (default viewer used by =mu4e=) to avoid HTML whenever
 possible.
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (add-to-list 'mm-discouraged-alternatives "text/html")
-  (add-to-list 'mm-discouraged-alternatives "text/richtext"))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(add-to-list 'mm-discouraged-alternatives "text/html")
+(add-to-list 'mm-discouraged-alternatives "text/richtext")
 #+end_src
 
 ** Disable =org-msg= by default
@@ -635,9 +638,8 @@ Has to be duplicated because =mu4e= doesn't use ~message-cite-style~'s values.
 
 ** Disable format=flowed
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (setq mu4e-compose-format-flowed nil))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-compose-format-flowed nil)
 #+end_src
 
 ** Don't permanently delete when trashing mails
@@ -649,42 +651,38 @@ instead.
 See https://github.com/djcb/mu/issues/1136#issuecomment-1066303788, the code
 will have to be adapted soon.
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (setf (alist-get 'trash mu4e-marks)
-        (list :char '("d" . "▼")
-              :prompt "dtrash"
-              :dyn-target (lambda (target msg)
-                            (mu4e-get-trash-folder msg))
-              :action (lambda (docid msg target)
-                        (mu4e~proc-move
-                         docid (mu4e~mark-check-target target) "-N")))))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setf (alist-get 'trash mu4e-marks)
+      (list :char '("d" . "▼")
+            :prompt "dtrash"
+            :dyn-target (lambda (target msg)
+                          (mu4e-get-trash-folder msg))
+            :action (lambda (docid msg target)
+                      (mu4e~proc-move
+                       docid (mu4e~mark-check-target target) "-N"))))
 #+end_src
 
 ** Add git-apply-path to mu4e actions
 
-#+begin_src emacs-lisp
-(after! mu4e
-  ;; TODO: upstream this, Doom emacs adds a view in browser action but it seems
-  ;; to be present by default now.
-  (setq mu4e-view-actions
-        (remove '("View in browser" . mu4e-action-view-in-browser) mu4e-view-actions))
-  (add-to-list 'mu4e-view-actions
-               '("GitApply" . mu4e-action-git-apply-patch) t)
-  (add-to-list 'mu4e-view-actions
-               '("MboxGitApply" . mu4e-action-git-apply-mbox) t))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+;; TODO: upstream this, Doom emacs adds a view in browser action but it seems
+;; to be present by default now.
+(setq mu4e-view-actions
+      (remove '("View in browser" . mu4e-action-view-in-browser) mu4e-view-actions))
+(add-to-list 'mu4e-view-actions
+             '("GitApply" . mu4e-action-git-apply-patch) t)
+(add-to-list 'mu4e-view-actions
+             '("MboxGitApply" . mu4e-action-git-apply-mbox) t)
 #+end_src
 
 ** Enable auto updates
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (setq mu4e-update-interval 900))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-update-interval 900)
 #+end_src
 
 ** Ask which address to send with when composing a new mail
 
-#+begin_src emacs-lisp
-(after! mu4e
-  (setq mu4e-compose-context-policy 'ask))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-compose-context-policy 'ask)
 #+end_src
