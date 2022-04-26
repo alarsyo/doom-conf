@@ -54,6 +54,7 @@
   - [[#add-git-apply-path-to-mu4e-actions][Add git-apply-path to mu4e actions]]
   - [[#enable-auto-updates][Enable auto updates]]
   - [[#ask-which-address-to-send-with-when-composing-a-new-mail][Ask which address to send with when composing a new mail]]
+  - [[#date-format-in-email-view][Date format in email view]]
 
 * Misc
 
@@ -685,4 +686,12 @@ will have to be adapted soon.
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-compose-context-policy 'ask)
+#+end_src
+
+** Date format in email view
+
+Use "french" date format in header view:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-date-format "%d/%m/%y")
 #+end_src
