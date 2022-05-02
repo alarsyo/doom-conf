@@ -55,6 +55,7 @@
   - [[#enable-auto-updates][Enable auto updates]]
   - [[#ask-which-address-to-send-with-when-composing-a-new-mail][Ask which address to send with when composing a new mail]]
   - [[#date-format-in-email-view][Date format in email view]]
+  - [[#only-fetch-main-directories-by-default][Only fetch main directories by default]]
 
 * Misc
 
@@ -694,4 +695,32 @@ Use "french" date format in header view:
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-headers-date-format "%d/%m/%y")
+#+end_src
+
+** Only fetch main directories by default
+
+I have a lot (100+) directories on my main email account, I only want to fetch
+the "important" ones by default (i.e. those coming from real individuals,
+addressed to me directly).
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-get-mail-command "mbsync alarsyo-main lrde")
+#+end_src
+
+However I also need a way to update all folders, so let's define a new function
+that does just that:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(defun my/mu4e-update-all-mail-and-index (run-in-background)
+  "Get mail for all folders, not just the main ones"
+  (interactive "P")
+  (let ((mu4e-get-mail-command "mbsync -a"))
+    (mu4e-update-mail-and-index run-in-background)))
+#+end_src
+
+Let's also bind it to =U= in the main view:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(map! :map mu4e-main-mode-map
+      :ne "U" #'my/mu4e-update-all-mail-and-index)
 #+end_src
