@@ -54,8 +54,11 @@
   - [[#add-git-apply-path-to-mu4e-actions][Add git-apply-path to mu4e actions]]
   - [[#enable-auto-updates][Enable auto updates]]
   - [[#ask-which-address-to-send-with-when-composing-a-new-mail][Ask which address to send with when composing a new mail]]
-  - [[#date-format-in-email-view][Date format in email view]]
   - [[#only-fetch-main-directories-by-default][Only fetch main directories by default]]
+  - [[#headers-view-format][Headers view format]]
+  - [[#message-view-fields][Message view fields]]
+  - [[#mailing-list-pretty-names][Mailing list pretty names]]
+  - [[#fix-attachment-icon-with-light-theme][Fix attachment icon with light theme]]
 
 * Misc
 
@@ -679,22 +682,25 @@ will have to be adapted soon.
 
 ** Enable auto updates
 
+=mu4e= refreshes my email in the background.
+
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-update-interval 900)
+#+end_src
+
+If it fetches new mail while I'm browsing some messages, it will refresh the
+headers view, potentially loosing context (like some messages that got marked as
+read because I skimmed over them, but that I don't want to see disappear yet).
+So let's disable this automatic update of headers:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-auto-update nil)
 #+end_src
 
 ** Ask which address to send with when composing a new mail
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-compose-context-policy 'ask)
-#+end_src
-
-** Date format in email view
-
-Use "french" date format in header view:
-
-#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
-(setq mu4e-headers-date-format "%d/%m/%y")
 #+end_src
 
 ** Only fetch main directories by default
@@ -721,4 +727,50 @@ Let's also bind it to =u= in the main view, overriding the default binding
 (map! :map mu4e-main-mode-map
       :ne "u" #'my/mu4e-update-main-mail-and-index
       :ne "U" #'mu4e-update-mail-and-index)
+#+end_src
+
+** Headers view format
+
+Use "french" date format in header view:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-date-format "%d/%m/%y")
+#+end_src
+
+Set the time display to 24h:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-time-format "%T")
+#+end_src
+
+Setup the headers view columns how I like them
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-fields '((:account-stripe . 1)
+                            ;; just enough room for dd/mm/yy or hh:mm:ss
+                            (:human-date . 8)
+                            (:flags . 6)
+                            (:mailing-list . 30)
+                            (:from-or-to . 30)
+                            (:subject)))
+#+end_src
+
+** Message view fields
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-view-fields '(:from :to :cc :subject :flags :date :mailing-list :maildir :path :size :tags :attachments :user-agent :signature :decryption))
+#+end_src
+
+** Mailing list pretty names
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-mailing-list-patterns '("[0-9]+\\.\\(.+\\)\\.gitlab\\.lrde\\.epita\\.fr"
+                                   "[0-9]+\\.\\(.+\\)\\.gitlab\\.com"
+                                   "\\(.+\\)\\.github\\.com"))
+#+end_src
+
+** Fix attachment icon with light theme
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-attach-mark (cons "a" (+mu4e-normalised-icon "file-text-o" :color "cyan")))
 #+end_src
