@@ -59,6 +59,7 @@
   - [[#message-view-fields][Message view fields]]
   - [[#mailing-list-pretty-names][Mailing list pretty names]]
   - [[#fix-attachment-icon-with-light-theme][Fix attachment icon with light theme]]
+  - [[#bookmarks][Bookmarks]]
 
 * Misc
 
@@ -773,4 +774,20 @@ Setup the headers view columns how I like them
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-headers-attach-mark (cons "a" (+mu4e-normalised-icon "file-text-o" :color "cyan")))
+#+end_src
+
+** Bookmarks
+
+Let's not display messages from mailing lists in main views, leave them to specific bookmarks.
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-bookmarks '((:name "Unread messages" :query "flag:unread AND NOT flag:list" :key ?u)
+                       (:name "Today's messages" :query "date:today..now AND NOT flag:list" :key ?t)
+                       (:name "Last 7 days" :query "date:7d..now AND NOT flag:list" :hide-unread t :key ?w)
+                       (:name "Messages with images" :query "mime:image/* AND NOT flag:list" :key ?p)
+                       (:name "All unread messages" :query "flag:unread" :key ?U)
+                       (:name "Today's messages (lists included)" :query "date:today..now" :key ?T)
+                       (:name "Last 7 days (lists included)" :query "date:7d..now" :hide-unread t :key ?W)
+                       (:name "Orgmode mailing list new posts" :query "list:emacs-orgmode.gnu.org AND flag:unread" :key ?o)
+                       (:name "All messages with images" :query "mime:image/*" :key ?P)))
 #+end_src
