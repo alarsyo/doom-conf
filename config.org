@@ -1,3 +1,4 @@
+#+title: Doom Emacs literal configuration
 #+STARTUP: content
 * Table of Contents :TOC_3:
 - [[#misc][Misc]]
