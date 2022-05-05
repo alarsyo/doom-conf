@@ -1,6 +1,6 @@
 #+title: Doom Emacs literal configuration
 #+STARTUP: content
-* Table of Contents :TOC_3:
+* Table of Contents :TOC_3:noexport:
 - [[#misc][Misc]]
   - [[#lexical-bindings][Lexical bindings]]
   - [[#dir-local-variables][Dir local variables]]
