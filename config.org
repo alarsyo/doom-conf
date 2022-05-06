@@ -699,6 +699,12 @@ So let's disable this automatic update of headers:
 (setq mu4e-headers-auto-update nil)
 #+end_src
 
+Additionally, don't show all new mail in the modeline, only relevant ones:
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-alert-interesting-mail-query "flag:unread AND NOT flag:list")
+#+end_src
+
 ** Ask which address to send with when composing a new mail
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
