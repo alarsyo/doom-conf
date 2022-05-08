@@ -575,6 +575,15 @@ Setup my main email account.
     (user-full-name         . "Antoine Martin")
     (mu4e-compose-signature . "Antoine Martin"))
   nil)
+
+(set-email-account! "prologin"
+  '((mu4e-sent-folder       . "/prologin/Sent")
+    (mu4e-drafts-folder     . "/prologin/Drafts")
+    (mu4e-trash-folder      . "/prologin/Trash")
+    (user-mail-address      . "antoine.martin@prologin.org")
+    (user-full-name         . "Antoine Martin")
+    (mu4e-compose-signature . "Antoine Martin"))
+  nil)
 #+end_src
 
 ** Sending mail
@@ -716,7 +725,7 @@ Let's define a new function that does just that:
 (defun my/mu4e-update-main-mail-and-index (run-in-background)
   "Get mail for all folders, not just the main ones"
   (interactive "P")
-  (let ((mu4e-get-mail-command "mbsync alarsyo-main lrde"))
+  (let ((mu4e-get-mail-command "mbsync alarsyo-main lrde prologin-main"))
     (mu4e-update-mail-and-index run-in-background)))
 #+end_src
 
@@ -766,7 +775,9 @@ Setup the headers view columns how I like them
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq mu4e-mailing-list-patterns '("[0-9]+\\.\\(.+\\)\\.gitlab\\.lrde\\.epita\\.fr"
                                    "[0-9]+\\.\\(.+\\)\\.gitlab\\.com"
-                                   "\\(.+\\)\\.github\\.com"))
+                                   "\\(.+\\)\\.github\\.com")
+      mu4e-user-mailing-lists '(("info.prologin.org" . "Infos Prologin")
+                                ("membres.ml.prologin.org" . "Membres Prologin")))
 #+end_src
 
 ** Fix attachment icon with light theme
