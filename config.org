@@ -590,6 +590,14 @@ I use =msmtp= as a SMTP forwarder
       message-send-mail-function #'message-send-mail-with-sendmail)
 #+end_src
 
+I don't want something like ~ws-butler~ to mess with my formatting, especially
+the trailing space after a signature delimiter:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook! mu4e-compose-mode
+  (ws-butler-mode -1))
+#+END_SRC
+
 ** Reading plain text
 
 Ask the =gnus-view= (default viewer used by =mu4e=) to avoid HTML whenever
