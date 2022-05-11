@@ -60,6 +60,7 @@
   - [[#mailing-list-pretty-names][Mailing list pretty names]]
   - [[#fix-attachment-icon-with-light-theme][Fix attachment icon with light theme]]
   - [[#bookmarks][Bookmarks]]
+  - [[#apply-marks-on-quit][Apply marks on quit]]
 
 * Misc
 
@@ -800,4 +801,12 @@ Let's not display messages from mailing lists in main views, leave them to speci
                        (:name "Last 7 days (lists included)" :query "date:7d..now" :hide-unread t :key ?W)
                        (:name "Orgmode mailing list new posts" :query "list:emacs-orgmode.gnu.org AND flag:unread" :key ?o)
                        (:name "All messages with images" :query "mime:image/*" :key ?P)))
+#+end_src
+
+** Apply marks on quit
+
+I don't want confirm to apply marks everytime I quit the headers view.
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq mu4e-headers-leave-behavior 'apply)
 #+end_src
