@@ -40,6 +40,7 @@
     - [[#org-roam-ui][org-roam-ui]]
   - [[#export-backends][Export backends]]
   - [[#doom-specific][Doom specific]]
+    - [[#enable-some-link-modules-that-doom-disables-by-default][Enable some link modules that doom disables by default]]
     - [[#bugfix][Bugfix]]
 - [[#magit][Magit]]
   - [[#gitlab-ci-skip-flag][Gitlab CI skip flag]]
@@ -505,6 +506,13 @@ one. Taken from [[https://github.com/hlissner/doom-emacs/tree/develop/modules/la
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 #+END_SRC
+
+*** Enable some link modules that doom disables by default
+
+#+begin_src emacs-lisp
+(add-to-list 'org-modules 'ol-info)
+(add-to-list 'org-modules 'ol-doi)
+#+end_src
 
 *** Bugfix
 
