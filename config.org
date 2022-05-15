@@ -619,18 +619,27 @@ possible.
 
 ** =org-msg= setup
 
-Doom adds a hook, making it impossible to disable. This allows us to toggle it
-manually.
-
-#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
-(setq +mu4e-compose-org-msg-toggle-next nil)
-#+end_src
-
 Add =-:nil= to the export options list, otherwise the =--= in the signature gets
 converted to a single hyphen when exporting to utf-8. See [[info:org#Export settings]]
 
 #+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
 (setq org-msg-options (concat org-msg-options " -:nil"))
+#+end_src
+
+Setup signature as well. The double backslashes are there to make sure that the
+linebreak is preserved even in the html export, which otherwise wraps the
+signature lines as a single paragraph.
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq org-msg-signature "\n#+begin_signature\n-- \\\\\nAntoine Martin\n#+end_signature")
+#+end_src
+
+I don't want to send HTML emails at all unless I choose to explicitely.
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq org-msg-default-alternatives '((new utf-8)
+                                     (reply-to-text utf-8)
+                                     (reply-to-html utf-8)))
 #+end_src
 
 ** Message quoting style
