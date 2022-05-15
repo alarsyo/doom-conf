@@ -48,7 +48,7 @@
   - [[#account-configuration][Account configuration]]
   - [[#sending-mail][Sending mail]]
   - [[#reading-plain-text][Reading plain text]]
-  - [[#disable-org-msg-by-default][Disable =org-msg= by default]]
+  - [[#org-msg-setup][=org-msg= setup]]
   - [[#message-quoting-style][Message quoting style]]
   - [[#disable-formatflowed][Disable format=flowed]]
   - [[#dont-permanently-delete-when-trashing-mails][Don't permanently delete when trashing mails]]
@@ -617,14 +617,20 @@ possible.
 (add-to-list 'mm-discouraged-alternatives "text/richtext")
 #+end_src
 
-** Disable =org-msg= by default
+** =org-msg= setup
 
 Doom adds a hook, making it impossible to disable. This allows us to toggle it
 manually.
 
-#+begin_src emacs-lisp
-(after! org-msg
-  (setq +mu4e-compose-org-msg-toggle-next nil))
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq +mu4e-compose-org-msg-toggle-next nil)
+#+end_src
+
+Add =-:nil= to the export options list, otherwise the =--= in the signature gets
+converted to a single hyphen when exporting to utf-8. See [[info:org#Export settings]]
+
+#+begin_src emacs-lisp :noweb-ref after-mu4e :tangle no
+(setq org-msg-options (concat org-msg-options " -:nil"))
 #+end_src
 
 ** Message quoting style
