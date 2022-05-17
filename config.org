@@ -109,7 +109,7 @@ A list of all doom themes can be found here:
 https://github.com/hlissner/emacs-doom-themes
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'doom-one-light)
 #+END_SRC
 
 ** Dark theme toggle
