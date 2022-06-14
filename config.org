@@ -819,7 +819,7 @@ Let's not display messages from mailing lists in main views, leave them to speci
                        (:name "Today's messages" :query "date:today..now AND NOT flag:list" :key ?t)
                        (:name "Last 7 days" :query "date:7d..now AND NOT flag:list" :hide-unread t :key ?w)
                        (:name "Messages with images" :query "mime:image/* AND NOT flag:list" :key ?p)
-                       (:name "All unread messages" :query "flag:unread" :key ?U)
+                       (:name "All unread messages" :query "flag:unread AND NOT list:emacs-orgmode.gnu.org" :key ?U)
                        (:name "Today's messages (lists included)" :query "date:today..now" :key ?T)
                        (:name "Last 7 days (lists included)" :query "date:7d..now" :hide-unread t :key ?W)
                        (:name "Orgmode mailing list new posts" :query "list:emacs-orgmode.gnu.org AND flag:unread" :key ?o)
