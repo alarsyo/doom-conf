@@ -690,8 +690,8 @@ will have to be adapted soon.
             :dyn-target (lambda (target msg)
                           (mu4e-get-trash-folder msg))
             :action (lambda (docid msg target)
-                      (mu4e~proc-move
-                       docid (mu4e~mark-check-target target) "-N"))))
+                      (mu4e--server-move
+                       docid (mu4e--mark-check-target target) "-N"))))
 #+end_src
 
 ** Add git-apply-path to mu4e actions
