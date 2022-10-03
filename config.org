@@ -425,6 +425,8 @@ Let's enable the =org-habit= module:
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-modules 'org-habit)
+(after! org-agenda
+  (setq org-habit-show-all-today t))
 #+END_SRC
 
 *** Save all org buffers shortcut
