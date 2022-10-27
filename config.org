@@ -22,6 +22,7 @@
     - [[#default-style][Default style]]
   - [[#nix][Nix]]
     - [[#formatting][Formatting]]
+  - [[#lilypond][LilyPond]]
 - [[#org-mode][Org mode]]
   - [[#directory][Directory]]
   - [[#appearance][Appearance]]
@@ -270,6 +271,13 @@ Use [[https://github.com/kamadorueda/alejandra][alejandra]] to format Nix code.
 
 #+begin_src emacs-lisp
 (set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+#+end_src
+** LilyPond
+
+Just load the lilypond mode
+
+#+begin_src emacs-lisp
+(require 'lilypond-init)
 #+end_src
 
 * Org mode
