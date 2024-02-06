@@ -794,6 +794,7 @@ Setup the headers view columns how I like them
                             (:human-date . 8)
                             (:flags . 6)
                             (:mailing-list . 30)
+                            (:maildir . 30)
                             (:from-or-to . 30)
                             (:subject)))
 #+end_src
