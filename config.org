@@ -270,7 +270,7 @@ Setup the default format for C/C++ editing.
 Use [[https://github.com/kamadorueda/alejandra][alejandra]] to format Nix code.
 
 #+begin_src emacs-lisp
-(set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+(set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
 #+end_src
 ** LilyPond
 
